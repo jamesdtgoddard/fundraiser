@@ -2,21 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting...</title>
+  <title>Spinning Wheel Redirect</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #f0f0f0;
+      font-family: sans-serif;
+    }
+
+    .wheel {
+      width: 200px;
+      height: 200px;
+      border: 10px solid #333;
+      border-radius: 50%;
+      position: relative;
+      animation: spin 3s ease-out;
+    }
+
+    .segment {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform-origin: 0% 0%;
+      background-color: #ff6666;
+    }
+
+    .segment:nth-child(2) {
+      transform: rotate(120deg);
+      background-color: #66cc66;
+    }
+
+    .segment:nth-child(3) {
+      transform: rotate(240deg);
+      background-color: #6699ff;
+    }
+
+    .arrow {
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 30px solid #333;
+      position: absolute;
+      top: -40px;
+      left: calc(50% - 15px);
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(1080deg); } /* 3 full spins */
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="arrow"></div>
+  <div class="wheel" id="wheel">
+    <div class="segment"></div>
+    <div class="segment"></div>
+    <div class="segment"></div>
+  </div>
+  <div class="message">Spinning the wheel...</div>
+
   <script>
-    window.onload = function() {
-      const urls = [
+    const urls = [
         "https://www.justgiving.com/page/james-goddard-3",
         "https://www.justgiving.com/page/chloe-missen-2",
         "https://www.justgiving.com/page/josh-fallows-1"
       ];
 
+    // Delay to allow spin animation to play
+    setTimeout(() => {
       const randomIndex = Math.floor(Math.random() * urls.length);
       window.location.href = urls[randomIndex];
-    };
+    }, 3500); // 3.5 seconds = spin time + pause
   </script>
-</head>
-<body>
-  <p>Redirecting you to a random page...</p>
 </body>
 </html>
+
