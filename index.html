@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    window.onload = function() {
+      const urls = [
+        "https://example.com",
+        "https://openai.com",
+        "https://wikipedia.org"
+      ];
+
+      const randomIndex = Math.floor(Math.random() * urls.length);
+      window.location.href = urls[randomIndex];
+    };
+  </script>
+</head>
+<body>
+  <p>Redirecting you to a random page...</p>
+</body>
+</html>
